@@ -8,7 +8,7 @@ var finalhandler = require('finalhandler')
 var httpes = require('http')
 var path = require('path')
 
-describe('osprey mock service v1.0', function () {
+describe('raml mocker - v1.0', function () {
   var http
 
   beforeEach(function () {
@@ -35,7 +35,6 @@ describe('osprey mock service v1.0', function () {
       )
       .use(server(http))
       .then(function (res) {
-        expect(res.headers.location).to.equal('/test')
         expect(JSON.parse(res.body)).to.deep.equal({success: true})
         expect(res.status).to.equal(200)
       })
@@ -64,18 +63,7 @@ describe('osprey mock service v1.0', function () {
       )
       .use(server(http))
       .then(function (res) {
-        expect(JSON.parse(res.body)).to.deep.equal([
-          {
-            example1: {
-              name: 'example1'
-            }
-          },
-          {
-            example2: {
-              name: 'example2'
-            }
-          }
-        ])
+        expect(JSON.parse(res.body).name).to.be.oneOf(['example1', 'example2'])
         expect(res.status).to.equal(200)
       })
     })
@@ -95,6 +83,58 @@ describe('osprey mock service v1.0', function () {
           expect(res.status).to.equal(200)
           expect(res.body).to.be.empty
         })
+    })
+
+    it('should return a header \'foo\' equal to the \'default\' value \'test\' instead of the \'example\' value', function () {
+      return popsicle.default(
+        {
+          method: 'GET',
+          url: '/api/headersdefaultbeforeexample'
+        }
+      )
+      .use(server(http))
+      .then(function (res) {
+        expect(res.headers.foo).to.equal('test')
+      })
+    })
+
+    it('should return a header \'foo\' equal to the \'default\' value \'test\'', function () {
+      return popsicle.default(
+        {
+          method: 'GET',
+          url: '/api/headersdefault'
+        }
+      )
+      .use(server(http))
+      .then(function (res) {
+        expect(res.headers.foo).to.equal('test')
+      })
+    })
+
+    it('should return a header \'foo\' equal to the \'example\' value \'bar\'', function () {
+      return popsicle.default(
+        {
+          method: 'GET',
+          url: '/api/headersexample'
+        }
+      )
+      .use(server(http))
+      .then(function (res) {
+        expect(res.headers.foo).to.equal('bar')
+      })
+    })
+
+    it('should return a header \'foo\' equal to any of the \'examples\' value defined', function () {
+      return popsicle.default(
+        {
+          method: 'GET',
+          url: '/api/headersexamples'
+        }
+      )
+      .use(server(http))
+      .then(function (res) {
+        expect(res.headers.foo).to.be.oneOf(['bar', 'foo', 'random', 'another'])
+      })
     })
   })
 })
