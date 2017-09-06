@@ -1,15 +1,15 @@
 {
-  "name": "raml-mocker",
-  "version": "0.2.1",
+  "name": "raml-mock-service",
+  "version": "1.0.0",
   "description": "Generate an API mock service from a RAML definition using Osprey",
-  "main": "raml-mocker.js",
+  "main": "raml-mock-service.js",
   "files": [
     "bin/",
-    "raml-mocker.js",
+    "raml-mock-service.js",
     "LICENSE"
   ],
   "bin": {
-    "osprey-mock-service": "bin/raml-mocker.js"
+    "osprey-mock-service": "bin/raml-mock-service.js"
   },
   "scripts": {
     "lint": "standard",
@@ -26,15 +26,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/raml-org/raml-mocker.git"
+    "url": "git://github.com/raml-org/raml-mock-service.git"
   },
   "keywords": [],
   "author": "MuleSoft, Inc.",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/raml-org/raml-mocker/issues"
+    "url": "https://github.com/raml-org/raml-mock-service/issues"
   },
-  "homepage": "https://github.com/raml-org/raml-mocker",
+  "homepage": "https://github.com/raml-org/raml-mock-service",
   "devDependencies": {
     "chai": "^3.5.0",
     "istanbul": "^0.4.5",
