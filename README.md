@@ -1,4 +1,4 @@
-# RAML Mocker
+# RAML Mock Service
 
 [![NPM version][npm-image]][npm-url]
 [![NPM downloads][downloads-image]][downloads-url]
@@ -12,13 +12,13 @@ Generate an API mock service from a RAML definition using Osprey. This implement
 ### Global (CLI)
 
 ```
-npm install -g raml-mocker
+npm install -g raml-mock-service
 ```
 
 Start the service from the CLI. This will automatically use the `baseUri` as the path to the mock service. For example, `http://example.com/api` will result in `http://localhost:{PORT}/api`.
 
 ```
-raml-mocker -f api.raml -p 3000
+raml-mock-service -f api.raml -p 3000
 ```
 
 **Options**
@@ -29,13 +29,13 @@ raml-mocker -f api.raml -p 3000
 ### Locally (JavaScript)
 
 ```
-npm install raml-mocker --save
+npm install raml-mock-service --save
 ```
 
 The mocking service simply accepts a RAML definition and returns a router that can be mounted into any Connect-style middleware layer or even used with `http`. Best used with `osprey` to support incoming validation automatically.
 
 ```js
-var mockService = require('../raml-mocker')
+var mockService = require('../raml-mock-service')
 var express = require('express')
 var parser = require('raml-1-parser')
 var path = require('path')
@@ -68,11 +68,11 @@ This module only uses the `example` (or `examples`) property inside a given reso
 
 Apache License 2.0
 
-[npm-image]: https://img.shields.io/npm/v/raml-mocker.svg?style=flat
-[npm-url]: https://npmjs.org/package/raml-mocker
-[downloads-image]: https://img.shields.io/npm/dm/raml-mocker.svg?style=flat
-[downloads-url]: https://npmjs.org/package/raml-mocker
-[travis-image]: https://img.shields.io/travis/raml-org/raml-mocker.svg?style=flat
-[travis-url]: https://travis-ci.org/raml-org/raml-mocker
-[coveralls-image]: https://img.shields.io/coveralls/raml-org/raml-mocker.svg?style=flat
-[coveralls-url]: https://coveralls.io/r/raml-org/raml-mocker?branch=master
+[npm-image]: https://img.shields.io/npm/v/raml-mock-service.svg?style=flat
+[npm-url]: https://npmjs.org/package/raml-mock-service
+[downloads-image]: https://img.shields.io/npm/dm/raml-mock-service.svg?style=flat
+[downloads-url]: https://npmjs.org/package/raml-mock-service
+[travis-image]: https://img.shields.io/travis/raml-org/raml-mock-service.svg?style=flat
+[travis-url]: https://travis-ci.org/raml-org/raml-mock-service
+[coveralls-image]: https://img.shields.io/coveralls/raml-org/raml-mock-service.svg?style=flat
+[coveralls-url]: https://coveralls.io/r/raml-org/raml-mock-service?branch=master
