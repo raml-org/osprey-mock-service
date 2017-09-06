@@ -1,24 +1,24 @@
-# Osprey Mock Service
+# RAML Mocker
 
 [![NPM version][npm-image]][npm-url]
 [![NPM downloads][downloads-image]][downloads-url]
 [![Build status][travis-image]][travis-url]
 [![Test coverage][coveralls-image]][coveralls-url]
 
-Generate an API mock service from a RAML definition using Osprey.
+Generate an API mock service from a RAML definition using Osprey. This implementation was heavely influenced by MuleSoft's [Osprey Mocking Service](https://github.com/mulesoft-labs/osprey-mock-service).
 
 ## Usage
 
 ### Global (CLI)
 
 ```
-npm install -g osprey-mock-service
+npm install -g raml-mocker
 ```
 
 Start the service from the CLI. This will automatically use the `baseUri` as the path to the mock service. For example, `http://example.com/api` will result in `http://localhost:{PORT}/api`.
 
 ```
-osprey-mock-service -f api.raml -p 3000
+raml-mocker -f api.raml -p 3000
 ```
 
 **Options**
@@ -29,13 +29,13 @@ osprey-mock-service -f api.raml -p 3000
 ### Locally (JavaScript)
 
 ```
-npm install osprey-mock-service --save
+npm install raml-mocker --save
 ```
 
 The mocking service simply accepts a RAML definition and returns a router that can be mounted into any Connect-style middleware layer or even used with `http`. Best used with `osprey` to support incoming validation automatically.
 
 ```js
-var mockService = require('../osprey-mock-service')
+var mockService = require('../raml-mocker')
 var express = require('express')
 var parser = require('raml-1-parser')
 var path = require('path')
@@ -68,11 +68,11 @@ This module only uses the `example` (or `examples`) property inside a given reso
 
 Apache License 2.0
 
-[npm-image]: https://img.shields.io/npm/v/osprey-mock-service.svg?style=flat
-[npm-url]: https://npmjs.org/package/osprey-mock-service
-[downloads-image]: https://img.shields.io/npm/dm/osprey-mock-service.svg?style=flat
-[downloads-url]: https://npmjs.org/package/osprey-mock-service
-[travis-image]: https://img.shields.io/travis/mulesoft-labs/osprey-mock-service.svg?style=flat
-[travis-url]: https://travis-ci.org/mulesoft-labs/osprey-mock-service
-[coveralls-image]: https://img.shields.io/coveralls/mulesoft-labs/osprey-mock-service.svg?style=flat
-[coveralls-url]: https://coveralls.io/r/mulesoft-labs/osprey-mock-service?branch=master
+[npm-image]: https://img.shields.io/npm/v/raml-mocker.svg?style=flat
+[npm-url]: https://npmjs.org/package/raml-mocker
+[downloads-image]: https://img.shields.io/npm/dm/raml-mocker.svg?style=flat
+[downloads-url]: https://npmjs.org/package/raml-mocker
+[travis-image]: https://img.shields.io/travis/raml-org/raml-mocker.svg?style=flat
+[travis-url]: https://travis-ci.org/raml-org/raml-mocker
+[coveralls-image]: https://img.shields.io/coveralls/raml-org/raml-mocker.svg?style=flat
+[coveralls-url]: https://coveralls.io/r/raml-org/raml-mocker?branch=master
