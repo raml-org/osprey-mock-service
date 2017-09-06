@@ -8,7 +8,7 @@ var finalhandler = require('finalhandler')
 var httpes = require('http')
 var path = require('path')
 
-describe('osprey mock service v0.8', function () {
+describe('raml mocker - v0.8', function () {
   var http
 
   beforeEach(function () {

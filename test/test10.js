@@ -8,7 +8,7 @@ var finalhandler = require('finalhandler')
 var httpes = require('http')
 var path = require('path')
 
-describe('osprey mock service v1.0', function () {
+describe('raml mocker - v1.0', function () {
   var http
 
   beforeEach(function () {
@@ -63,18 +63,7 @@ describe('osprey mock service v1.0', function () {
       )
       .use(server(http))
       .then(function (res) {
-        expect(JSON.parse(res.body)).to.deep.equal([
-          {
-            example1: {
-              name: 'example1'
-            }
-          },
-          {
-            example2: {
-              name: 'example2'
-            }
-          }
-        ])
+        expect(JSON.parse(res.body).name).to.be.oneOf(['example1', 'example2'])
         expect(res.status).to.equal(200)
       })
     })

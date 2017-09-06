@@ -121,18 +121,7 @@ function handler (method) {
 
     if (type) {
       res.setHeader('Content-Type', type)
-      var example = body.example
-
-      // Parse body.examples.
-      if (Array.isArray(body.examples)) {
-        example = []
-
-        body.examples.forEach(function (ex) {
-          var obj = {}
-          obj[ex.name] = ex.structuredValue
-          example.push(obj)
-        })
-      }
+      var example = getSingleExample(body)
 
       if (example) {
         res.write(typeof example === 'object' ? JSON.stringify(example) : example)
