@@ -1,5 +1,7 @@
 # RAML Mock Service
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/raml-org/raml-mock-service.svg)](https://greenkeeper.io/)
+
 [![NPM version][npm-image]][npm-url]
 [![NPM downloads][downloads-image]][downloads-url]
 [![Build status][travis-image]][travis-url]
